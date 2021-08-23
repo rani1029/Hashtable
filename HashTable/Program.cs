@@ -7,23 +7,32 @@ namespace HashTable
         static void Main(string[] args)
         {
             Console.WriteLine("Hello welcome to hashtable ");
-            MyMapNode<string, string> myMapNode = new MyMapNode<string, string>(5);
-
-            //Add data
-            myMapNode.Add("0", "To");
-            myMapNode.Add("1", "be");
-            myMapNode.Add("2", "To");
-            myMapNode.Add("3", "or");
-            myMapNode.Add("4", "not");
-            myMapNode.Add("5", "be");
-
-            //Get Value and Display
-            string hash5 = myMapNode.Get("5");
-            Console.WriteLine("5th index  value: " + hash5);
+            int key = 0;
 
 
-            string hash2 = myMapNode.Get("2");
-            Console.WriteLine("2nd index  value: " + hash2);
+            string paragraphPhrase = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+            string[] paragraph = paragraphPhrase.Split(" ");
+
+
+            MyMapNode<int, string> myMapNode = new MyMapNode<int, string>(paragraph.Length);
+
+            //Add 
+            foreach (string word in paragraph)
+            {
+                myMapNode.Add(key, word);
+                key++;
+            }
+
+
+            Console.WriteLine("frequency of words ");
+
+
+            for (key = 0; key < paragraph.Length; key++)
+            {
+                string value = myMapNode.Get(key);
+                Console.WriteLine(key + " - " + value);
+            }
+
         }
     }
 }
